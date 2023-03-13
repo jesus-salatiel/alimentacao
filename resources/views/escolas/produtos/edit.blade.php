@@ -47,11 +47,19 @@
                         <div class="p-2 w-1/2">
                             <div class="relative">
                                 <label for="name" class="leading-7 text-sm text-gray-100">Categoria</label>
-                                <input
-                                    value="{{ old('categoria', $escolaProduto->categoria) }}"
-                                    type="text" id="categoria" name="categoria"
-                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-900 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                            </div>
+                                <select input type="text" id="categoria" name="categoria"
+                                       value="{{ old('categoria') }}"
+                                       class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-['15px'] outline-none text-gray-700 py-2.5 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                <option selected>{{$escolaProduto->categoria}}</option>
+                                <option value="BANDEJA">BANDEJA</option>
+                                <option value="FRASCO">FRASCO</option>
+                                <option value="LITRO">LITRO</option>
+                                <option value="PACOTE">PACOTE</option>
+                                <option value="QUILO">QUILO</option>
+                                <option value="UNIDADE">UNIDADE</option>
+
+                                </select>
+                                </div>
                             @error('categoria')
                                 <div class="text-red-400 text-sm">{{ $message }}</div>
                             @enderror
