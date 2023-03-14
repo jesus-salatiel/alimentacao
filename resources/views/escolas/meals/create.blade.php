@@ -3,6 +3,7 @@
 @section('title', 'Número de Refeições')
 
 @section('content')
+
     <section class="text-gray-600">
         <div class="container px-5 py-5 mx-auto">
             <div class="lg:w-3/4 w-full mx-auto overflow-auto">
@@ -119,18 +120,27 @@
                             @enderror
                         </div>
 
-                        {{-- <div class="p-2 w-1/12">
+                        <div class="p-2 w-1/12">
                             <div class="relative">
-                                <label for="name" class="leading-7 text-sm text-gray-100">Total Estudantes</label>
-                                <input type="text" id="fornecedor" name="fornecedor" value="{{() }}"
-                                    readonly
+                                <label for="name" class="leading-7 text-sm text-gray-100">Usuário</label>
+                                <input type="text" id="usuario" name="usuario" value="{{$user->name}}"
                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
-                            @error('fornecedor')
+                            @error('usuario')
                                 <div class="text-red-400 text-sm">{{ $message }}</div>
                             @enderror
-                        </div> --}}
+                        </div>
 
+                        <div class="p-2 w-1/12">
+                            <div class="relative">
+                                <label for="name" class="leading-7 text-sm text-gray-100">Escola_Id</label>
+                                <input type="text" id="escola_sede_id" name="escola_sede_id" value="{{$user->escola_sede_id}}"
+                                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            </div>
+                            @error('escola_sede_id')
+                                <div class="text-red-400 text-sm">{{ $message }}</div>
+                            @enderror
+                        </div>
 
                         <div class="p-2 w-full">
                             <button type="submit"

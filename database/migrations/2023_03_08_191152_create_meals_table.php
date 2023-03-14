@@ -24,6 +24,8 @@ return new class extends Migration
             $table->integer('dinner_repeat')->default(0);
             $table->integer('number_students_mornig')->default(0);
             $table->integer('number_students_afternoon')->default(0);
+            $table->string('escola_sede_id')->default('');
+            $table->string('usuario')->default('');
 
             $table->softDeletes();
             $table->timestamps();

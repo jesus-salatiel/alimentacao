@@ -20,11 +20,14 @@ class MealsController extends Controller
     public function index()
     {
 
-        $meals = Meals::all();
         Gate::authorize('user-access');
+        $user_school = Auth::user();
+        // dd($user_school, $meals);
+        $user_escola = Meals::where('escola_sede_id', $user_school->escola_sede_id )->get();
+
         // dd($meals);
 
-        return view('escolas.meals.index', compact('meals'));
+        return view('escolas.meals.index', compact('user_school', 'user_escola'));
     }
 
     /**

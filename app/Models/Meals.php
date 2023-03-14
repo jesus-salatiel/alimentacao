@@ -11,6 +11,6 @@ class Meals extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['days_meal','snack_mornig','snack+ajternoon','lunch','lunch_repeat','dinner','dinner_repeat','number_students_mornig','number_students_afternoon',];
+    protected $fillable = ['days_meal','snack_mornig','snack+ajternoon','lunch','lunch_repeat','dinner','dinner_repeat','number_students_mornig','number_students_afternoon','escola_sede_id','usuario'];
 
 }
