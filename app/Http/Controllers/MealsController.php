@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreMealsRequest;
 use App\Http\Requests\UpdateMealsRequest;
 use App\Models\Meals;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Redirect;
 
 class MealsController extends Controller
 {
@@ -15,8 +19,10 @@ class MealsController extends Controller
      */
     public function index()
     {
+
         $meals = Meals::all();
-        dd($meals);
+        Gate::authorize('user-access');
+        // dd($meals);
 
         return view('escolas.meals.index', compact('meals'));
     }
@@ -26,9 +32,13 @@ class MealsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        Gate::authorize('user-access');
+        $user = Auth::user();
+        // dd($user);
+        return view('escolas.meals.create', compact('user'));
     }
 
     /**
@@ -37,9 +47,14 @@ class MealsController extends Controller
      * @param  \App\Http\Requests\StoreMealsRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMealsRequest $request)
+    public function store(Request $request)
     {
-        //
+        Gate::authorize('user-access');
+        Meals::create($request->all());
+        // dd($request);
+        return Redirect::route('escolas.meals.index');
+
+
     }
 
     /**
@@ -59,9 +74,13 @@ class MealsController extends Controller
      * @param  \App\Models\Meals  $meals
      * @return \Illuminate\Http\Response
      */
-    public function edit(Meals $meals)
+    public function edit($id)
     {
-        //
+        Gate::authorize('user-access');
+        $mealsEscola = Meals::find($id);
+
+        // dd($escolaProduto);
+        return view('escolas.meals.edit', compact('mealsEscola'));
     }
 
     /**

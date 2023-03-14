@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\EscolaProduct;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 
 class EscolaProductController extends Controller
@@ -16,6 +17,7 @@ class EscolaProductController extends Controller
      */
     public function index()
     {
+        Gate::authorize('user-access');
         $user = Auth::user();
 
         $escolaProduto = EscolaProduct::where('escola_sede_id', $user->escola_sede_id)->get();
@@ -32,6 +34,7 @@ class EscolaProductController extends Controller
      */
     public function create(Request $request)
     {
+        Gate::authorize('user-access');
         $user = Auth::user();
         // dd($user);
         return view('escolas.produtos.create', compact('user'));
@@ -45,7 +48,8 @@ class EscolaProductController extends Controller
      */
     public function store(Request $request)
     {
-         EscolaProduct::create($request->all());
+        Gate::authorize('user-access');
+        EscolaProduct::create($request->all());
         // dd($request);
 
         return Redirect::route('escolas.produtos.index');
@@ -71,6 +75,7 @@ class EscolaProductController extends Controller
     public function edit($id)
     {
 
+        Gate::authorize('user-access');
         $escolaProduto = EscolaProduct::find($id);
 
         // dd($escolaProduto);
@@ -86,6 +91,7 @@ class EscolaProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+        Gate::authorize('user-access');
         $escolaProduct = EscolaProduct::find($id);
 
         $escolaProduct->update($request->all());
@@ -102,6 +108,7 @@ class EscolaProductController extends Controller
      */
     public function destroy(Request $request ,$id)
     {
+        Gate::authorize('user-access');
         $escolaProduct = EscolaProduct::findOrFail($id);
         $escolaProduct->delete();
 

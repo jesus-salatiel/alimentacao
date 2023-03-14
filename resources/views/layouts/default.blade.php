@@ -10,8 +10,9 @@
         http-equiv="X-UA-Compatible"
         content="ie=edge"
     >
-    <title>Document</title>
+    <title>@yield('title')</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/datepicker.min.js"></script>
 </head>
 <body class="bg-slate-900">
     <header class="text-gray-100">

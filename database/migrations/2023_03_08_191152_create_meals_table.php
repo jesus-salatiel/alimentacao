@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->id()->unique();
-            $table->date('days_meal');
-            $table->integer('snack_mornig');
-            $table->integer('snack_afternoon');
-            $table->integer('lunch');
-            $table->integer('lunch_repeat');
-            $table->integer('dinner');
-            $table->integer('dinner_repeat');
-            $table->integer('number_studens_mornig');
-            $table->integer('number_students_afternoon');
+            $table->string('days_meal');
+            $table->integer('snack_mornig')->default(0);
+            $table->integer('snack_afternoon')->default(0);
+            $table->integer('lunch')->default(0);
+            $table->integer('lunch_repeat')->default(0);
+            $table->integer('dinner')->default(0);
+            $table->integer('dinner_repeat')->default(0);
+            $table->integer('number_students_mornig')->default(0);
+            $table->integer('number_students_afternoon')->default(0);
 
             $table->softDeletes();
             $table->timestamps();

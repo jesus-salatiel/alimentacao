@@ -37,14 +37,36 @@
                     </x-jet-nav-link>
                     @endcan
 
+                      @can('admin-acess')
+                    <x-jet-nav-link href="{{ route('admin.produtos.create') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('há definir rrsrs') }}
+                    </x-jet-nav-link>
+                        @else
+                        <x-jet-nav-link href="{{ route('escolas.meals.index') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Refeições Diárias ') }}
+                    </x-jet-nav-link>
+                    @endcan
+
+                     @can('admin-acess')
+                    <x-jet-nav-link href="{{ route('admin.produtos.create') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Será definido rsrsr ') }}
+                    </x-jet-nav-link>
+                        @else
+                        <x-jet-nav-link href="{{ route('escolas.meals.create') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Número de Refeições ') }}
+                    </x-jet-nav-link>
+                    @endcan
+
+
+
                     @can('admin-acess')
                     <x-jet-nav-link href="{{ route('admin.relatorios.index') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Relatórios') }}
                     </x-jet-nav-link>
                     @else
-                        <x-jet-nav-link href="{{ route('admin.relatorios.index') }}" :active="request()->routeIs('dashboard')">
+                        {{-- <x-jet-nav-link href="{{ route('admin.relatorios.index') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Relatórios') }}
-                    </x-jet-nav-link>
+                    </x-jet-nav-link> --}}
 
 
                     @endcan

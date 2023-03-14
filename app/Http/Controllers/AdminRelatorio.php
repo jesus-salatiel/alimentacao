@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdminProduct;
 use App\Models\EscolaProduct;
-use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AdminRelatorio extends Controller
 {
@@ -16,6 +14,7 @@ class AdminRelatorio extends Controller
      */
     public function index()
     {
+        Gate::authorize('admin-access');
         $adminrelatorio = EscolaProduct::all();
         // dd($adminrelatorio);
         return view('admin.relatorios.index', compact('adminrelatorio'));
